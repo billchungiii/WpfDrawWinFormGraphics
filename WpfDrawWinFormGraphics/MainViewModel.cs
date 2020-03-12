@@ -25,28 +25,25 @@ namespace WpfDrawWinFormGraphics
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsNeedChange)));
                     if (_isNeedChange)
                     {
-
-                        using (var myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Green))
-                        {
-                            using (var formGraphics = WinPanel.CreateGraphics())
-                            {
-                                formGraphics.Clear(System.Drawing.Color.White);
-                                formGraphics.FillEllipse(myBrush, new System.Drawing.Rectangle(0, 0, 50, 50));
-                            }
-                        }
+                        Draw(System.Drawing.Color.Green , new System.Drawing.Rectangle(0, 0, 50, 50));
                     }
                     else
                     {
-                        using (var myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.BlueViolet))
-                        {
-                            using (var formGraphics = WinPanel.CreateGraphics())
-                            {
-                                formGraphics.Clear(System.Drawing.Color.White);
-                                formGraphics.FillEllipse(myBrush, new System.Drawing.Rectangle(0, 0, 200, 300));
-                            }
-                        }
+                        Draw(System.Drawing.Color.Blue, new System.Drawing.Rectangle(0, 0, 100, 100));
                     }
 
+                }
+            }
+        }
+
+        private void Draw(System.Drawing.Color color, System.Drawing.Rectangle rect)
+        {
+            using (var myBrush = new System.Drawing.SolidBrush(color))
+            {
+                using (var formGraphics = WinPanel.CreateGraphics())
+                {
+                    formGraphics.Clear(System.Drawing.Color.White);
+                    formGraphics.FillEllipse(myBrush, rect );
                 }
             }
         }
